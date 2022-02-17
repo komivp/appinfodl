@@ -1,1 +1,1 @@
-Содержание доступно по лицензии Creative Commons Zero (общественное достояние)
+GNU GENERAL PUBLIC LICENSE v3
