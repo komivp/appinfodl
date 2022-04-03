@@ -1,3 +1,5 @@
+if(typeof _lang=="undefined") var _lang={};
+
 _lang["en"]={
 	"_name":"English",
 	"_powered":"by translate.yandex.ru",
