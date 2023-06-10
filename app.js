@@ -14,21 +14,25 @@ var librarys={
 	err:"",
 	versions:function(){
 		return {old:2101,
-		stable:2209,
-		beta:2211};
+		oldstable:2209,
+		stable:2306,
+		beta:221100};
 	},
 	getver:function(){
 		var n="ver",ver="";
-		if(window.localStorage) ver=localStorage.getItem(n);
-		if(!ver){
-			var matches = document.cookie.match(new RegExp("(?:^|; )" + n.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
-			ver= matches ? decodeURIComponent(matches[1]) : ""; 
-		}		
-		return (ver||"");		
+		try{
+			if(window.localStorage&&localStorage.getItem) ver=localStorage.getItem(n);
+			if(!ver){
+				var matches = document.cookie.match(new RegExp("(?:^|; )" + n.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
+				ver= matches ? decodeURIComponent(matches[1]) : ""; 
+			}
+		}			
+		catch(e){}	
+		return (ver||"");	
 	},
 	libs:function(){
 		
-		return [//"WebContent/beta.js"]}//,
+		return [
 		{name:"jquery",important:0,url:["http://browser.appfxml.com/library/jquery-1.12.4.min.js","http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js","http://komivp.github.io.spiderxml.com/library/jquery-1.12.4.min.js"]},
 		{name:"json",important:1,url:["http://browser.appfxml.com/library/json.js","http://komivp.github.io.spiderxml.com/library/json.js","https://cdnjs.cloudflare.com/ajax/libs/json2/20160511/json2.min.js"]},
 		{name:"underscore",important:1,require:"jquery",url:["http://browser.appfxml.com/library/underscore_1.8.3.js","http://komivp.github.io.spiderxml.com/library/underscore_1.8.3.js","https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"]},
@@ -37,7 +41,7 @@ var librarys={
 		{name:"guide",important:0,url:["http://85.17.30.89/common/jtv.js?v=6","http://46.36.220.208/common/jtv.js?v=6"]},
 		{name:"webOS",important:0,url:["http://browser.appfxml.com/library/webOS.js","http://komivp.github.io.spiderxml.com/library/webOS.js"]},
 		{name:"jw",important:0,url:["http://browser.appfxml.com/library/jwplayer_8.20.1.js","http://komivp.github.io.spiderxml.com/library/jwplayer_8.20.1.js"]},	
-		{name:"js",require:"jquery",important:0,url:["http://185.158.114.122/browser/jsobf/beta.js.php?ver="+this.getver(),"http://browser2.appfxml.com/jsobf/beta.js.php?ver="+this.getver(),"http://komivp.github.io.spiderxml.com/app_"+(this.getver()||this.versions().stable)+".js"]}		
+		{name:"js",require:"jquery",important:0,url:["http://browser.appfxml.com/jsobf/beta.js.php?ver="+this.getver(),"http://browser2.appfxml.com/jsobf/beta.js.php?ver="+this.getver(),"http://komivp.github.io.spiderxml.com/app_"+(this.getver()||this.versions().stable)+".js"]}		
 		];
 	},
 	exis:function(l){
@@ -176,4 +180,4 @@ var librarys={
 }.adds();
  
 var tomflight_fail=function(){}
-
+var is_vod=function(){}
