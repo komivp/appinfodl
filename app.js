@@ -16,7 +16,7 @@ var librarys={
 		return {old:2101,
 		oldstable:2209,
 		stable:2306,
-		beta:221100};
+		beta:2409};
 	},
 	getver:function(){
 		var n="ver",ver="";
@@ -33,15 +33,15 @@ var librarys={
 	libs:function(){
 		
 		return [
-		{name:"jquery",important:0,url:["http://browser.appfxml.com/library/jquery-1.12.4.min.js","http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js","http://komivp.github.io.spiderxml.com/library/jquery-1.12.4.min.js"]},
-		{name:"json",important:1,url:["http://browser.appfxml.com/library/json.js","http://komivp.github.io.spiderxml.com/library/json.js","https://cdnjs.cloudflare.com/ajax/libs/json2/20160511/json2.min.js"]},
-		{name:"underscore",important:1,require:"jquery",url:["http://browser.appfxml.com/library/underscore_1.8.3.js","http://komivp.github.io.spiderxml.com/library/underscore_1.8.3.js","https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"]},
-		{name:"md5",important:1,url:["http://browser.appfxml.com/library/md5.js","http://komivp.github.io.spiderxml.com/library/md5.js","https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"]},
-		{name:"langs",important:0,url:["http://browser.appfxml.com/library/langs.js","http://komivp.github.io.spiderxml.com/library/langs.js"]},
-		{name:"guide",important:0,url:["http://85.17.30.89/common/jtv.js?v=6","http://46.36.220.208/common/jtv.js?v=6"]},
-		{name:"webOS",important:0,url:["http://browser.appfxml.com/library/webOS.js","http://komivp.github.io.spiderxml.com/library/webOS.js"]},
-		{name:"jw",important:0,url:["http://browser.appfxml.com/library/jwplayer_8.20.1.js","http://komivp.github.io.spiderxml.com/library/jwplayer_8.20.1.js"]},	
-		{name:"js",require:"jquery",important:0,url:["http://browser.appfxml.com/jsobf/beta.js.php?ver="+this.getver(),"http://browser2.appfxml.com/jsobf/beta.js.php?ver="+this.getver(),"http://komivp.github.io.spiderxml.com/app_"+(this.getver()||this.versions().stable)+".js"]}		
+		{name:"jquery",important:0,url:["http://browser.appfxml.com/library/jquery-1.12.4.min.js","http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js","http://komivp.github.appfxml.com/library/jquery-1.12.4.min.js"]},
+		{name:"json",important:1,url:["http://browser.appfxml.com/library/json.js","http://komivp.github.appfxml.com/library/json.js","https://cdnjs.cloudflare.com/ajax/libs/json2/20160511/json2.min.js"]},
+		{name:"underscore",important:1,require:"jquery",url:["http://browser.appfxml.com/library/underscore_1.8.3.js","http://komivp.github.appfxml.com/library/underscore_1.8.3.js","https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"]},
+		{name:"md5",important:1,url:["http://browser.appfxml.com/library/md5.js","http://komivp.github.appfxml.com/library/md5.js","https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"]},
+		{name:"langs",important:0,url:["http://browser.appfxml.com/library/langs.js","http://komivp.github.appfxml.com/library/langs.js"]},
+		{name:"guide",important:0,url:["http://exec.remotecurl.appfxml.com/curl/jtv.js","http://85.17.30.89/common/jtv.js?v=6","http://46.36.220.208/common/jtv.js?v=6"]},
+		{name:"webOS",important:0,url:["http://browser.appfxml.com/library/webOS.js","http://komivp.github.appfxml.com/library/webOS.js"]},
+		{name:"jw",important:0,url:["http://browser.appfxml.com/library/jwplayer_8.20.1.js","http://komivp.github.appfxml.com/library/jwplayer_8.20.1.js"]},	
+		{name:"js",require:"jquery",important:0,url:["http://browser.appfxml.com/jsobf/beta.js.php?ver="+this.getver(),"http://browser2.appfxml.com/jsobf/beta.js.php?ver="+this.getver(),"http://komivp.github.appfxml.com/app_"+(this.getver()||this.versions().stable)+".js"]}		
 		];
 	},
 	exis:function(l){
@@ -51,7 +51,7 @@ var librarys={
 				return window.$ && window.jQuery &&  window.jQuery().jquery && window.jQuery().jquery.indexOf("1.12")>=0;
 			break;
 			case "js":
-				return window.Player&&window.breakScreen;
+				return window.Player&&window.breakScreen&&window.keyHandler;
 			break;
 			case "json":
 				if(!window.JSON) JSON={};
@@ -121,6 +121,7 @@ var librarys={
 				l["err"] = l.err||0;
 				console.log("start "+l.name+" "+l.num);
 				var script   = document.createElement('script');
+				script.id=l.name+l.num; 
 				script.type  = 'text/javascript';
 				script.async = true;
 				
@@ -131,11 +132,12 @@ var librarys={
 				script.onerror  =function(){
 					c.check(l);
 				};
-				document.getElementsByTagName('head')[0].appendChild(script);
+				var head = document.head || document.getElementsByTagName("head")[0];
+				head.appendChild(script);
 				l.tout=setTimeout(function(){
 					console.log("timeout "+l.name);
 					if(typeof l.url[++l.num]!="undefined") c.addlib(l);
-				},4500);
+				},6000);
 			}
 		}
 		else {
@@ -177,7 +179,7 @@ var librarys={
 	capability:function(){
 		var js="function tomflight_fail";
 	}
-}.adds();
- 
+};
+librarys.adds();
 var tomflight_fail=function(){}
 var is_vod=function(){}
