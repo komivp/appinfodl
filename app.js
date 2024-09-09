@@ -20,12 +20,23 @@ var librarys={
 	},
 	getver:function(){
 		var n="ver",ver="";
-		try{
+		try{				
 			if(window.localStorage&&localStorage.getItem) ver=localStorage.getItem(n);
 			if(!ver){
 				var matches = document.cookie.match(new RegExp("(?:^|; )" + n.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
-				ver= matches ? decodeURIComponent(matches[1]) : ""; 
-			}
+				ver= matches ? decodeURIComponent(matches[1]) : "";
+			}	
+			if(!ver){
+				if(ua.match(/maple/i)&&window.FileSystem&&window.curWidget){				
+					var fileSystemObj = new FileSystem();
+					if(!fileSystemObj.isValidCommonPath(curWidget.id)) fileSystemObj.createCommonDir(curWidget.id);					
+					var fileObj = fileSystemObj.openCommonFile(curWidget.id + '/'+n,'r');
+					if(fileObj!=null){
+						ver=fileObj.readAll();
+						fileSystemObj.closeCommonFile(fileObj); 
+					}
+				}
+			}		
 		}			
 		catch(e){}	
 		return (ver||"");	
