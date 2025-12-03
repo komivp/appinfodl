@@ -4,7 +4,7 @@ tFlp='github';
 ipS=2;
 token='';
 ipG='127.0.0.1';
-ipSource='https://raw.githubusercontent.com/komivp/appinfodl/main';
+ipSource='https://cdn.jsdelivr.net/gh/komivp/appinfodl@main';
 ipCountry='';
 ipC='';
 var ua=navigator.userAgent.toLowerCase(),booting=true,JtvServ=null,JtvC={},JtvE={},JtvEF={},JtvCF={};
@@ -45,14 +45,14 @@ var librarys={
 	libs:function(){
 		
 		return [
-		{name:"jquery",important:0,url:["https://raw.githubusercontent.com/komivp/appinfodl/main/library/jquery-1.12.4.min.js","http://browser.appfxml.com/library/jquery-1.12.4.min.js","http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js","http://komivp.github.appfxml.com/library/jquery-1.12.4.min.js"]},
-		{name:"json",important:1,url:["https://raw.githubusercontent.com/komivp/appinfodl/main/library/json.js","http://browser.appfxml.com/library/json.js","http://komivp.github.appfxml.com/library/json.js","https://cdnjs.cloudflare.com/ajax/libs/json2/20160511/json2.min.js"]},
-		{name:"underscore",important:1,require:"jquery",url:["https://raw.githubusercontent.com/komivp/appinfodl/main/library/underscore_1.8.3.js","http://browser.appfxml.com/library/underscore_1.8.3.js","http://komivp.github.appfxml.com/library/underscore_1.8.3.js","https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"]},
-		{name:"md5",important:1,url:["https://raw.githubusercontent.com/komivp/appinfodl/main/library/md5.js","http://browser.appfxml.com/library/md5.js","http://komivp.github.appfxml.com/library/md5.js","https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"]},
-		{name:"langs",important:0,url:["https://raw.githubusercontent.com/komivp/appinfodl/main/library/langs.js","http://browser.appfxml.com/library/langs.js","http://komivp.github.appfxml.com/library/langs.js"]},
+		{name:"jquery",important:0,url:["https://cdn.jsdelivr.net/gh/komivp/appinfodl@main/library/jquery-1.12.4.min.js","http://browser.appfxml.com/library/jquery-1.12.4.min.js","http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js","http://komivp.github.appfxml.com/library/jquery-1.12.4.min.js"]},
+		{name:"json",important:1,url:["https://cdn.jsdelivr.net/gh/komivp/appinfodl@main/library/json.js","http://browser.appfxml.com/library/json.js","http://komivp.github.appfxml.com/library/json.js","https://cdnjs.cloudflare.com/ajax/libs/json2/20160511/json2.min.js"]},
+		{name:"underscore",important:1,require:"jquery",url:["https://cdn.jsdelivr.net/gh/komivp/appinfodl@main/library/underscore_1.8.3.js","http://browser.appfxml.com/library/underscore_1.8.3.js","http://komivp.github.appfxml.com/library/underscore_1.8.3.js","https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"]},
+		{name:"md5",important:1,url:["https://cdn.jsdelivr.net/gh/komivp/appinfodl@main/library/md5.js","http://browser.appfxml.com/library/md5.js","http://komivp.github.appfxml.com/library/md5.js","https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"]},
+		{name:"langs",important:0,url:["https://cdn.jsdelivr.net/gh/komivp/appinfodl@main/library/langs.js","http://browser.appfxml.com/library/langs.js","http://komivp.github.appfxml.com/library/langs.js"]},
 		{name:"guide",important:0,url:["http://exec.remotecurl.appfxml.com/curl/jtv.js","http://85.17.30.89/common/jtv.js?v=6","http://46.36.220.208/common/jtv.js?v=6"]},
-		{name:"webOS",important:0,url:["https://raw.githubusercontent.com/komivp/appinfodl/main/library/webOS.js","http://browser.appfxml.com/library/webOS.js","http://komivp.github.appfxml.com/library/webOS.js"]},
-		{name:"jw",important:0,url:["https://raw.githubusercontent.com/komivp/appinfodl/main/library/jwplayer_8.20.1.js","http://browser.appfxml.com/library/jwplayer_8.20.1.js","http://komivp.github.appfxml.com/library/jwplayer_8.20.1.js"]},	
+		{name:"webOS",important:0,url:["https://cdn.jsdelivr.net/gh/komivp/appinfodl@main/library/webOS.js","http://browser.appfxml.com/library/webOS.js","http://komivp.github.appfxml.com/library/webOS.js"]},
+		{name:"jw",important:0,url:["https://cdn.jsdelivr.net/gh/komivp/appinfodl@main/library/jwplayer_8.20.1.js","http://browser.appfxml.com/library/jwplayer_8.20.1.js","http://komivp.github.appfxml.com/library/jwplayer_8.20.1.js"]},	
 		{name:"js",require:"jquery",important:0,url:["http://browser.appfxml.com/jsobf/beta.js.php?ver="+this.getver(),"http://browser2.appfxml.com/jsobf/beta.js.php?ver="+this.getver(),"http://komivp.github.appfxml.com/app_"+(this.getver()||this.versions().stable)+".js"]}		
 		];
 	},
