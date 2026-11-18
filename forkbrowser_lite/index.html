@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1280" />
+<meta name="referrer" content="never" />
+<title>Fork browser lite</title>
+<style type="text/css">
+html, body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background: #2a4e6b;
+	font-family: Arial, Helvetica, sans-serif;
+}
+#startlogo {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #2a4e6b;
+}
+#loadingTitle {
+	position: absolute;
+	top: 42%;
+	left: 0;
+	width: 100%;
+	margin-top: -28px;
+	font-size: 48px;
+	font-weight: bold;
+	color: #e8e8e8;
+	text-align: center;
+}
+#startcmd {
+	position: absolute;
+	bottom: 44px;
+	left: 10%;
+	width: 80%;
+	z-index: 10;
+	padding: 10px 12px;
+	font-size: 14px;
+	text-align: center;
+	color: #fff;
+	background: #1a3348;
+	border: 1px solid #4a6a82;
+}
+.platform-version {
+	position: absolute;
+	right: 16px;
+	bottom: 12px;
+	color: #b0c4d4;
+	font-size: 14px;
+	z-index: 12;
+}
+#main { display: none; }
+</style>
+<script type="text/javascript">
+var is_git = 1;
+var loader_platform = "browser";
+var tFlp = "github";
+var ipS = 2;
+var token = "";
+var ipG = "";
+var ipCountry = "";
+var ipC = "";
+var ipSource = "https://cdn.jsdelivr.net/gh/komivp/appinfodl@main";
+</script>
+</head>
+<body>
+<div id="startlogo">
+	<div id="loadingTitle">Fork browser</div>
+	<div id="startcmd">CDN lite...</div>
+	<div class="platform-version">forkbrowser_lite</div>
+</div>
+<div id="main"><div id="pr"></div></div>
+<div id="other" style="display:none;position:absolute;top:0;left:0;width:0;height:0;"></div>
+<div id="vk" style="display:none;"></div>
+<div id="QualCh" style="display:none;background-color:black;"></div>
+<div id="MenuCh" style="display:none;background-color:black;"></div>
+<div id="popUp" style="display:none;"></div>
+<div id="player" style="display:none;"></div>
+<script type="text/javascript">
+(function () {
+	var CDN = ipSource;
+	var statusEl = document.getElementById("startcmd");
+	var i = 0;
+	var libs = [
+		CDN + "/library/jquery-1.12.4.min.js",
+		CDN + "/library/json.js",
+		CDN + "/library/underscore_1.8.3.js",
+		CDN + "/library/md5.js",
+		CDN + "/library/langs.js",
+		CDN + "/library/jtv.js",
+		CDN + "/library/jwplayer_8.20.1.js",
+		CDN + "/app_2306.js"
+	];
+
+	function say(t) {
+		if (statusEl) statusEl.innerHTML = t || "";
+	}
+
+	function next() {
+		if (i >= libs.length) {
+			say("ready");
+			return;
+		}
+		var url = libs[i++];
+		say("load " + i + "/" + libs.length);
+		var s = document.createElement("script");
+		s.type = "text/javascript";
+		s.charset = "utf-8";
+		s.src = url;
+		s.onload = next;
+		s.onerror = function () {
+			say("fail: " + url);
+			next();
+		};
+		(document.head || document.getElementsByTagName("head")[0]).appendChild(s);
+	}
+
+	say("start CDN");
+	next();
+})();
+</script>
+</body>
+</html>
