@@ -68,6 +68,33 @@ var ipG = "";
 var ipCountry = "";
 var ipC = "";
 var ipSource = "https://cdn.jsdelivr.net/gh/komivp/appinfodl@main";
+/* maJor.start() checks librarys.exis("json") / librarys.exis("js") */
+var librarys = {
+	exis: function (l) {
+		var n = (l && l.name) || l;
+		switch (n) {
+			case "jquery":
+				return window.$ && window.jQuery;
+			case "json":
+				return window.JSON && window.JSON.parse;
+			case "underscore":
+				return window._ && window._.each;
+			case "md5":
+				return window.md5;
+			case "langs":
+				return window._lang && window._lang.en;
+			case "guide":
+				return window.JtvServ;
+			case "jw":
+				return 1;
+			case "webOS":
+				return 1;
+			case "js":
+				return window.Player && window.breakScreen && window.keyHandler;
+		}
+		return 0;
+	}
+};
 </script>
 </head>
 <body>
@@ -103,9 +130,18 @@ var ipSource = "https://cdn.jsdelivr.net/gh/komivp/appinfodl@main";
 		if (statusEl) statusEl.innerHTML = t || "";
 	}
 
+	function boot() {
+		say("start app...");
+		try {
+			if (window.maJor && maJor.start) maJor.start();
+		} catch (e) {
+			say("start err: " + (e && e.message ? e.message : e));
+		}
+	}
+
 	function next() {
 		if (i >= libs.length) {
-			say("ready");
+			boot();
 			return;
 		}
 		var url = libs[i++];
