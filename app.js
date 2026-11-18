@@ -76,6 +76,7 @@ var librarys={
 				return !ua.match(/webos/) || !window.webOS; 
 			break;
 			case "jw":
+				if(ua.match(/maple/i)) return 1;
 				var t=document.createElement("video");
 				if(t && t.canPlayType && t.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"')) return window.jwplayer;
 				else return 1; 
