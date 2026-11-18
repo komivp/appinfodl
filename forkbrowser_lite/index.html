@@ -68,6 +68,10 @@ var ipG = "";
 var ipCountry = "";
 var ipC = "";
 var ipSource = "https://cdn.jsdelivr.net/gh/komivp/appinfodl@main";
+var ua = navigator.userAgent.toLowerCase(), booting = true, JtvServ = null, JtvC = {}, JtvE = {}, JtvEF = {}, JtvCF = {};
+if (!window.console) console = {};
+if (!console.log) console.log = function () {};
+if (!console.trace) console.trace = function () {};
 /* maJor.start() checks librarys.exis("json") / librarys.exis("js") */
 var librarys = {
 	exis: function (l) {
