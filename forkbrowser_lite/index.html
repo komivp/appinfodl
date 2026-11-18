@@ -106,6 +106,9 @@ if (!window.console) console = {};
 if (!console.log) console.log = function () {};
 if (!console.trace) console.trace = function () {};
 var librarys = {
+	versions: function () {
+		return { old: 2101, oldstable: 2209, stable: 2306, beta: 221100 };
+	},
 	exis: function (l) {
 		var n = (l && l.name) || l;
 		switch (n) {
