@@ -98,7 +98,9 @@ var token = "";
 var ipG = "";
 var ipCountry = "";
 var ipC = "";
-var ipSource = "https://cdn.jsdelivr.net/gh/komivp/appinfodl@main";
+/* same host/path as this page (parent of /forkbrowser_lite/) */
+var ipSource = (location.href.split("?")[0].split("#")[0]).replace(/\/forkbrowser_lite\/[^\/]*$/i, "");
+if (!ipSource) ipSource = "https://cdn.jsdelivr.net/gh/komivp/appinfodl@main";
 var ua = navigator.userAgent.toLowerCase(), booting = true, JtvServ = null, JtvC = {}, JtvE = {}, JtvEF = {}, JtvCF = {};
 if (!window.console) console = {};
 if (!console.log) console.log = function () {};
